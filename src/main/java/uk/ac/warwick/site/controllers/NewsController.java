@@ -23,7 +23,7 @@ public class NewsController {
 
     @GetMapping("/api/news")
     public ArrayNode getNews(@RequestParam String keyword){
-        String sql = "select * from appledaily WHERE text LIKE :keyword";
+        String sql = "SELECT * FROM appledaily WHERE text LIKE :keyword";
         ArrayNode arrayNode = objectMapper.createArrayNode();
         Map<String, Object> map = new HashMap();
         map.put("keyword", "%"+keyword+"%");
