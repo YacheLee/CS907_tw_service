@@ -28,7 +28,7 @@ public class NewsController {
         Map<String, Object> map = new HashMap();
         map.put("keyword", "%"+keyword+"%");
         namedParameterJdbcTemplate.query(sql, map, rs->{
-            arrayNode.add(rs.getString("text"));
+            arrayNode.add(rs.getString("title"));
         });
         return arrayNode;
     }
