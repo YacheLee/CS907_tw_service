@@ -22,8 +22,11 @@ public class NewsController {
     JdbcTemplate jdbcTemplate;
 
     @GetMapping("/api/news")
-    public ArrayNode getNews(@RequestParam String keyword){
-        String sql = "SELECT * FROM appledaily WHERE text LIKE :keyword";
+    public ArrayNode getNews(@RequestParam String keyword, @RequestParam(defaultValue = "2018") int fromYear, @RequestParam(defaultValue = "2018") int toYear){
+        String sql = "SELECT * FROM appledaily WHERE " +
+                "timestamp between '"+fromYear+"-01-01' and '"+toYear+"-12-31'" +
+                "AND text LIKE :keyword";
+
         ArrayNode arrayNode = objectMapper.createArrayNode();
         Map<String, Object> map = new HashMap();
         map.put("keyword", "%"+keyword+"%");
