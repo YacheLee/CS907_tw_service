@@ -30,9 +30,9 @@ public class NewsController {
     @GetMapping("/api/news")
     public ArrayNode getNews(
             @RequestParam String keyword,
-            @RequestParam(defaultValue = "true") boolean isTw2016,
-            @RequestParam(defaultValue = "true") boolean isTw2017,
-            @RequestParam(defaultValue = "true") boolean isTw2018){
+            @RequestParam(defaultValue = "true", value="is_tw_2016") boolean isTw2016,
+            @RequestParam(defaultValue = "true", value="is_tw_2017") boolean isTw2017,
+            @RequestParam(defaultValue = "true", value="is_tw_2018") boolean isTw2018){
         List list = new ArrayList();
         if(isTw2016){
             list.add(2016);
